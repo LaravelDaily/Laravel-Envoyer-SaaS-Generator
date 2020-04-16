@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\MassDestroyProjectRequest;
@@ -35,6 +36,8 @@ class ProjectsController extends Controller
      */
     public function create()
     {
+        abort_if(Gate::denies('project_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return view('admin.projects.create');
     }
 
@@ -44,6 +47,8 @@ class ProjectsController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        abort_if(Gate::denies('project_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         Project::create($request->all());
 
         return redirect()->route('admin.projects.index');
