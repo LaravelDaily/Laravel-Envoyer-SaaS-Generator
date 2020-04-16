@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'Third envoyer try',
+    'site_title' => 'SaaS Envoyer',
 ];
