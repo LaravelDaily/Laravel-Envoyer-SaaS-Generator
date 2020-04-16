@@ -25,7 +25,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('countries', 'CountriesController');
 
     // Projects
-    Route::resource('projects', 'ProjectsController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::delete('projects/destroy', 'ProjectsController@massDestroy')->name('projects.massDestroy');
+    Route::resource('projects', 'ProjectsController');
 
     Route::get('billing', 'BillingController@index')->name('billing.index');
     Route::post('billing/checkout', 'BillingController@checkout')->name('billing.checkout');

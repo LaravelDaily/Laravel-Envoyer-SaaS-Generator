@@ -90,5 +90,11 @@ return [
     'project'        => [
         'title'          => 'Projects',
         'title_singular' => 'Project',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => '',
+            'name'              => 'Name',
+            'name_helper'       => '',
+            ],
     ],
 ];

@@ -90,4 +90,9 @@ class User extends Authenticatable
         return $this->belongsTo(Country::class);
     }
 
+    public function projects()
+    {
+        return $this->hasMany(Project::class, 'created_by_id');
+    }
+
 }
